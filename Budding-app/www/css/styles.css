@@ -4,12 +4,22 @@ html {
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
+    background-color: #b3d6d2;
 }
 #intro-title {
     display: flex;
     justify-content: center;
     margin-top: 0px;
     margin-bottom: 40px;
+}
+.texthighlight {
+    color: #e4dcc6;
+}
+.texthighlightdark {
+    color: #407d5a;
+}
+.textcolorwhite {
+    color:white;
 }
 #intro-subtitle {
     margin-top: 20px;
@@ -62,7 +72,7 @@ header {
 }
 #main-body {
     /* display: none; */
-    background-color: #b3d6d2;
+
     width: 100vw;
     height: 100vh;
     color: white;
@@ -86,16 +96,16 @@ font-weight: bold;
 }
 .button {
     background-color: #4d2619;
-    height: 10vh;
-    width: 25vh;
+    height: 7vh;
+    width: 20vh;
     border-radius: 50px;
     margin-top: 50px;
 }
 .column {
     flex-direction:column;
-    margin-left: 25vw;
+    margin-left: auto;
     height: 100vh;
-    width: 100%;
+    width: fit-content;
     border-radius: 25px;
     position: absolute;
     display: none;
@@ -111,11 +121,19 @@ font-weight: bold;
     display: flex;
     justify-content: space-between;
     padding: 25px;
-    background-color:#4d2619
+    background-color:#e1e1e1
 }
 .input {
     background-color:red;
 }
+
+
+.item1 {background-color:#b1b0b0}
+
+
+
+
+
 #circle1 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
 #circle2 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
 #circle3 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}

@@ -34,21 +34,12 @@
         <title>Template</title>
     </head>
 
-
-
-
-
     <body>
-
-
-        <!-- Splash screen -->
-<!--         
-        <div id="splash-body">
+        
+        <div id="splash-body"><!-- SPLASH SCREEN | LOADING SCREEN -->
             <div class="center">
                 <div>
-                    <div class="bg-logo">
-                        <h1 class="jua lightbrown icon">budding</h1>
-                    </div>
+                    <div class="bg-logo"><h1 class="jua lightbrown icon">budding</h1></div>
                     <div id="loading-container">
                         <div id="circle1" class="circle">.</div>
                         <div id="circle2" class="circle">.</div>
@@ -58,70 +49,61 @@
                     </div>
                 </div>      
             </div>
-        </div> -->
+        </div>
+
+        <div id="intro" class="center"><!--INTRO SECTION | QUICK TOOLTIP SECTION-->
+            <div id="intro-section">
+                <h1 id="intro-title"class="jua lightbrown" style="font-size: 15vh;">budding</h1>                           
+                <h1 id="intro-subtitle" class="jua textalign" style="font-size: 5vh; color: white;">Your pets need you!</h1>
+                <p id="intro-text"class="gill textalign" style="font-size: 2vh">Adopt a pet at your current location <br> to give them a home!<br> <br>Adopt pets where you spend time<br> to take care of them!<br>
+                <button class="button" id="see-your-buddies"><h1 class="jua" style="margin:0px; padding: 15px; color: rgb(255, 255, 255);">See your buddies!</h1></button>
+            </div>
+        </div>
 
 
-        <div id="main-body">
-            <!-- <h1 id="title" class="jua lightbrown"> budding</h1> -->
-            <div id="intro" class="center" style="display: none;">
-                <!-- Screen after splash, pre main view -->
-                <div>
-                    <div id="intro-section">
 
-                        <h1 id="intro-title"class="jua lightbrown" style="font-size: 15vh;">budding</h1>
-                            
-                        <h1 id="intro-subtitle" class="jua textalign" style="font-size: 5vh;">Your pets need you!</h1>
 
-                        <p id="intro-text"class="gill textalign" style="font-size: 2vh">Adopt a pet at your current location <br> to give them a home!<br> <br>Adopt pets where you spend time<br> to take care of them!<br>
 
-                        <button class="button" id="see-your-buddies"><h1 class="jua" style="margin:0px; padding: 25px;">See your buddies!</h1></button>
+
+        <div id="main-view"><!--MAIN APP VIEW-->
+            <h1 class="jua lightbrown textalign" style="margin-top: 0" id="budding-header">budding</h1>
+            <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name">Jambo</h1>
+
+            <p class="textalign jua texthighlightdark" style="font-size: 3vh; margin-top: 0px;margin-bottom: 0px;" id="pet-type"> Cat</p>
+
+            <p class="textalign jua texthighlightdark" style="font-size: 3vh; margin-top: 0px;margin-bottom: 0px;" id="pet-breed">Orange Tabby</p>
+            
+            <p class="textalign jua texthighlightdark" style="font-size: 3vh; margin-top: 0px;margin-bottom: 0px;" id="pet-activity"> Studying</p>
+
+            <p class="textalign jua texthighlightdark" style="font-size: 3vh; margin-top: 0px;margin-bottom: 0px;" id="pet-timer"> 60</p>
+
+            <button id="testbutton">Test</button>
+            <button id="testbutton">Test</button>
+            <div class="column textalign" id="selectors"><!--SIDE MENU-->
+
+
+                        
+                    </div>
+                    <div class="item height-large">
+                        <h1 style="color: white;">Pet Selector</h1>
+                        <div id="location-group" class="selection-group">
+                            <div class="item1" id="baconbutton"><p>Bacon</p></div>
+                            <div class="item1" id="jambobutton"><p>Jambo</p></div>
+                            <div class="item1" id="nearobutton"><p>Nearo</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
-<!-- Make the selector look like a bike lock, so when in range it looks unlocked -->
-                    <div id="main-view">
-                        <h1 class="jua lightbrown textalign" style="margin-top: 0">budding</h1>
-
-                        <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name">Jambo</h1>
-                        <p class="textalign jua" style="font-size: 3vh; margin-top: 0px;" id="pet-type"> Orange Tabby</p>
-
-
-<!--Add current mood for animals, depending on time since last activity. Possibly add something to add time to pet timer-->
-
-
-                        <!--Side menu, gets toggled on and off by clicking title-->
-                            <div class="column textalign" id="selectors">
-                                <div class="item height-large">
-                                    <h1>Location Selector</h1>
-                                    <div id="location-group" class="selection-group">
-                                        <p>All</p>
-                                        <p>Home</p>
-                                        <p>Gym</p>
-                                        <p>Library</p>
-                                    </div>
-                                    
-
-                                <div class="item height-large">
-                                    <h1>Pet Selector</h1>
-                                    <div id="location-group" class="selection-group">
-                                        <p>Pet1</p>
-                                        <p>Pet2</p>
-                                        <p>Pet3</p>
-                                        <p>Pet4</p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
         </div>
 
         <script src="cordova.js"></script>
         <script src="js/jquery-3.6.1.min.js"></script>
         <script src="js/index.js"></script>
     </body>
-
-
-   
+<!-- --------------------------------IDEAS -->
+<!-- Make the selector look like a bike lock, so when in range it looks unlocked -->
+<!--Add current mood for animals, depending on time since last activity. Possibly add something to add time to pet timer-->
+<!-- MAKE PETS ALIVE SECTION ON BOTTOM "10 DAYS SINCE LAST WORKPALCE ACCIDENT" MAKE A PET LIFE COUNTER, PET LIVES COUNTER -->
+<!-- lIVE FEED-->
 
 </html>
