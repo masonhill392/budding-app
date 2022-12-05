@@ -38,114 +38,138 @@
 
 
 
-    <head>
-        <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
-        <title>Template</title>
-    </head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Template</title>
+</head>
 
-    <body>
-        
-        <div id="splash-body"><!-- SPLASH SCREEN | LOADING SCREEN -->
-            <div class="center">
-                <div>
-                    <div class="bg-logo"><h1 class="jua lightbrown icon">budding</h1></div>
-                    <div id="loading-container">
-                        <div id="circle1" class="circle">.</div>
-                        <div id="circle2" class="circle">.</div>
-                        <div id="circle3" class="circle">.</div>
-                        <div id="circle4" class="circle">.</div>
-                        <div id="circle5" class="circle">.</div>
-                    </div>
-                </div>      
+<body>
+
+    <div id="splash-body">
+        <!-- SPLASH SCREEN | LOADING SCREEN -->
+        <div class="center">
+            <div>
+                <div class="bg-logo">
+                    <h1 class="jua lightbrown icon">budding</h1>
+                </div>
+                <div id="loading-container">
+                    <div id="circle1" class="circle">.</div>
+                    <div id="circle2" class="circle">.</div>
+                    <div id="circle3" class="circle">.</div>
+                    <div id="circle4" class="circle">.</div>
+                    <div id="circle5" class="circle">.</div>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div id="intro" class="center"><!--INTRO SECTION | QUICK TOOLTIP SECTION-->
-            <div id="intro-section">
-                <h1 id="intro-title"class="jua lightbrown h1 textcolorwhite">budding</h1>                           
-                <h1 id="intro-subtitle" class="jua textalign h2 textcolorwhite">Your pets need you!</h1>
-                <p id="intro-text"class="gill textalign h3 textcolorwhite">Adopt a pet at your current location <br> to give them a home!<br> <br>Adopt pets where you spend time<br> to take care of them!<br>
+    <div id="intro" class="center">
+        <!--INTRO SECTION | QUICK TOOLTIP SECTION-->
+        <div id="intro-section">
+            <h1 id="intro-title" class="jua lightbrown h1 textcolorwhite">budding</h1>
+            <h1 id="intro-subtitle" class="jua textalign h2 textcolorwhite">Your pets need you!</h1>
+            <p id="intro-text" class="gill textalign h3 textcolorwhite">Adopt a pet at your current location <br> to
+                give them a home!<br> <br>Adopt pets where you spend time<br> to take care of them!<br>
                 <!-- <button class="button" id="see-your-buddies"><h1 class="jua" style="margin:0px; padding: 15px; color: rgb(255, 255, 255);">See your buddies!</h1></button> -->
+        </div>
+    </div>
+
+    <!--MAIN APP VIEW-->
+    <div id="main-view">
+
+
+        <!--HEADER-->
+        <h1 class="jua lightbrown textalign" style="margin-top: 0" id="budding-header">budding</h1>
+
+
+        <!--PET INFORMATION-->
+        <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name">Jambo</h1>
+        <div style="background-color:rgb(228, 228, 228);">
+            <p class="textalign jua texthighlightdark petInformation" id="pet-type"> Cat</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-breed">Orange Tabby</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-activity"> Studying</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-timer"> 60</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-radius"> Far</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"> Latitude</p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"> Longitude</p>
+            <div style="display: flex"><button id="petbutton">Spend time with your pet!</div>
+            <div style="display: flex"><button id="petpanelbutton">Pet Panel</div>
+            <div style="display: flex"><button id="petLocationButton">Grab Location</div>
+        </div>
+
+
+        <!--ACTIVITY & TIMER MENU-->
+        <div class="overlay" id="overlay">
+            <h1 class="textalign">Spend time with your pet!</h1>
+            <p class=" textalign" id="activity">Activity with Petname!</p>
+            <button id="startTimer"> Start Time</button>
+            <button id="stopTimer"> Stop Time</button>
+            <div>
+                <p class="textalign" id="timerSlot">time</p>
             </div>
         </div>
 
-            <!--MAIN APP VIEW-->
-        <div id="main-view">
 
-            
-            <!--HEADER-->
-            <h1 class="jua lightbrown textalign" style="margin-top: 0" id="budding-header">budding</h1> 
-
-
-            <!--PET INFORMATION-->
-            <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name">Jambo</h1>
-            <div style="background-color:rgb(228, 228, 228);">
-                <p class="textalign jua texthighlightdark petInformation" id="pet-type"> Cat</p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-breed">Orange Tabby</p>
-                <p class="textalign jua texthighlightdark petInformation"id="pet-activity"> Studying</p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-timer"> 60</p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-radius"> Far</p>
-                <div style="display: flex"><button id="petbutton">Spend time with your pet!</div>
-                <div style="display: flex"><button id="petpanelbutton">Pet Panel</div>
+        <!--SIDE MENU-->
+        <div class="column textalign" id="selectors">
+            <div class="item height-large">
+                <h1 class="textalign textcolorwhite">Pet Panel</h1>
+                <div id="location-group" class="selection-group"></div>
+                <button id="forward">forward</button>
+                <button id="backward">backward</button>
+                <button id="newPet">new pet</button>
             </div>
+        </div>
 
 
-            <!--ACTIVITY & TIMER MENU-->
-            <div class="overlay" id="overlay">
-                <h1 class="textalign">Spend time with your pet!</h1>
-                <p class=" textalign" id="activity">Activity with Petname!</p>
-                <button id="startTimer"> Start Time</button>
-                <button id="stopTimer"> Stop Time</button>
-                <div><p class="textalign" id="timerSlot">time</p></div>
-            </div>
-
-
-            <!--SIDE MENU-->
-            <div class="column textalign" id="selectors">
-                <div class="item height-large">
-                    <h1 class="textalign textcolorwhite">Pet Panel</h1>
-                    <div id="location-group" class="selection-group"></div>
-                    <button id="forward">forward</button>
-                    <button id="backward">backward</button>
-                    <button id="newPet">new pet</button>
-                </div>
-            </div>
-
-
-            <!--SIDE MENU-->
-            <div class="column textalign" id="newPetMenu">
-                <div class="item">
-                    <h1 class="textalign"style="color: white;">New Pet..</h1>
-                    <div id="property-group">
-                        <div><p class="question">Pets name?</p><input id="petNameInput"></div>
-                        <div><p class="question">What type of animal?</p><input id="petTypeInput"></div>
-                        <div><p class="question">What breed of animal?</p><input id="petBreedInput"></div>
-                        <div><p class="question">What activity do they like?</p><input id="petActivityInput"></div>
-                        <div><p class="question">How long is their activity?</p><input id="petActivityLengthInput"></div>
-                        <div><p class="question">petCoordsData</p><input id="petCoordsInput"></div>
-                        <div><button id="submitNewPet">Adopt New Pet</button></div>
+        <!--SIDE MENU-->
+        <div class="column textalign" id="newPetMenu">
+            <div class="item">
+                <h1 class="textalign" style="color: white;">New Pet..</h1>
+                <div id="property-group">
+                    <div>
+                        <p class="question">Pets name?</p><input id="petNameInput">
                     </div>
+                    <div>
+                        <p class="question">What type of animal?</p><input id="petTypeInput">
+                    </div>
+                    <div>
+                        <p class="question">What breed of animal?</p><input id="petBreedInput">
+                    </div>
+                    <div>
+                        <p class="question">What activity do they like?</p><input id="petActivityInput">
+                    </div>
+                    <div>
+                        <p class="question">How long is their activity?</p><input id="petActivityLengthInput">
+                    </div>
+                    <p class="question">Current coords:</p><input id="petCurrentCoords">
                 </div>
+                <div>
+                    <p class="question">Current location: </p><input id="petCoordsInput">
+                </div>
+                <div><button id="submitNewPet">Adopt New Pet</button></div>
             </div>
-
-
-
         </div>
+    </div>
 
-        <script src="cordova.js"></script>
-        <script src="js/jquery-3.6.1.min.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+
+
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
 <!-- --------------------------------IDEAS -->
 <!-- Make the selector look like a bike lock, so when in range it looks unlocked -->
 <!--Add current mood for animals, depending on time since last activity. Possibly add something to add time to pet timer-->

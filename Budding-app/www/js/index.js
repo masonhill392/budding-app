@@ -1,74 +1,54 @@
 
-    $("#splash-body").hide();
-    $("#intro").hide();
-    $("#main-view").show();
-    $("#overlay").hide();
+// const { $ } = require("./framework7-bundle.min");
+console.log("js connect")
+$("#splash-body").hide();
+$("#intro").hide();
+$("#main-view").show();
+$("#overlay").hide();
 
-
-
-// intro();
-
-
-// function intro() {
-//     $("#splash-body").show();
-//     $("#intro").hide();
-//     $("#main-view").hide();
-//     $("#overlay").hide();
-//     setInterval(showIntro, 3000);
-// }
-// function showIntro() {
-//     $("#splash-body").hide();
-//     $("#intro").show();
-//     setInterval(showMainView, 5000);
-
-// }
-// function showMainView() {
-//     $("#intro").hide();
-//     $("#main-view").show();
-// };
-// $("#selectors").show();
-
-// circleLoadingAnimation();
-// function circleLoadingAnimation() {
-//     x=1
-//     while (x != 6) {
-//         y = 0.1;
-//         while (y <= 1) {
-//             updateOpacity();
-//         }
-//         x++;
-//     }
-//     if (x = 6) {
-//         $("#splash-body").hide();
-//         $("#main-body").show();
-//         console.log("Finished loading. Main page showing.")
-//     }
-//     function updateOpacity() {
-//         y = y+0.1;
-//         console.log("Circle " + x + "|" + y);
-//         $("#circle" + x).css("filter", "opacity(" + y + ")");
-//     }
-// }
-    
 x = 0;
 var i = 0;
 var z = 0;
+var lat = 0;
+var long = 0;
 
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
 var pets = new Array ( );
-pets[0] = new Array ( "Jambo", "Cat","Orange Tabby", 1, "Studying");
-pets[1] = new Array ( "Bacon", "Dog","Bichon Shih-tzu", 2, "Gym");
-pets[2] = new Array ( "Spot", "Dog","Dalmation", 3, "Reading");
-pets[3] = new Array ( "Red", "Cat","Tuxedo", 4, "Cleaning");
-pets[4] = new Array ( "Duke", "Dog","Mastiff", 5, "Eating");
-pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating");
+pets[0] = new Array ( "Jambo", "Cat","Orange Tabby", 1, "Studying", "Lat", "Long");
+pets[1] = new Array ( "Bacon", "Dog","Bichon Shih-tzu", 2, "Gym", "Lat3", "Long2");
+pets[2] = new Array ( "Spot", "Dog","Dalmation", 3, "Reading", "La4t", "Lon6g");
+pets[3] = new Array ( "Red", "Cat","Tuxedo", 4, "Cleaning", "L7at", "L0ong");
+pets[4] = new Array ( "Duke", "Dog","Mastiff", 5, "Eating", "Lt", "Lo-ng");
+pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating", "L4at", "Long");
 var length = Object.keys(pets).length;
 
-init();
+//taken from professors application/done in class | cordova-geolocation-plugin
+
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady() {
+    console.log("device ready")
+    getLocation();
+ }
+ init();
+function getLocation() {
+    var geoOpts = {
+        enableHighAccuracy: true
+    }
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOpts);
+    function geoSuccess(position) {
+        console.log(position);
+        lat = position.coords.latitude
+        long = position.coords.longitude
+        // $("#").append(lat + "," + long) --------Insert results into HTML
+    }
+    function geoError(message) {
+        alert(message.message);
+    }
+    console.log(lat + long)
+}
 
 
-
-$("button").click(function(event) {//FORWARD & BACK BUTTONS
+$("button").on("click",function(event) {//FORWARD & BACK BUTTONS
     length = Object.keys(pets).length;
 
     if(event.target.id == "forward") {
@@ -82,7 +62,10 @@ $("button").click(function(event) {//FORWARD & BACK BUTTONS
         console.log(i)
     }
 });
-
+$("#petLocationButton").on("click",function() {
+    getLocation();
+    console.log("getLocation ran")
+});
 function init() {
     length = Object.keys(pets).length;
     console.log(length + "=length")
@@ -98,24 +81,32 @@ function updatePetInHTML() {
         $("#pet-name").html(pets[i][0]);
         $("#pet-type").html(pets[i][1]);
         $("#pet-breed").html(pets[i][2]);
-        $("#pet-timer").html(pets[i][3] + " seconds");
-        $("#pet-activity").html(pets[i][4]);
+        $("#pet-activity").html(pets[i][3] + " seconds");
+        $("#pet-timer").html(pets[i][4]);
+        $("#pet-longitude").html(pets[i][5]);
+        $("#pet-latitude").html(pets[i][6]);
 }
 
-$("#petpanelbutton").click(function() {
+$("#petpanelbutton").on("click",function() {
     $("#selectors").toggle();
     $("#overlay").hide();
 })
-$("#petbutton").click(function() {
+$("#petbutton").on("click",function() {
     $("#overlay").toggle();
     $("#selectors").hide();
 })
-$("#newPet").click(function(){
+$("#newPet").on("click",function(){
     $("#overlay").hide();
     $("#selectors").hide();
     $("#newPetMenu").show();
+
+    getLocation();
+    $("#petCoordsInput").append(lat+ "," +long);
+
+
 })
-$("#submitNewPet").click(function() {
+$("#submitNewPet").on("click",function() {
+    getLocation
     $("#newPetMenu").hide();
     $("#selectors").show();
     q = Object.keys(pets).length;
@@ -125,15 +116,12 @@ $("#submitNewPet").click(function() {
     var breed = document.getElementById('petBreedInput').value;
     var actLength = document.getElementById('petActivityInput').value;
     var act = document.getElementById('petActivityLengthInput').value;
-    pets[q] = new Array ( name, type, breed, actLength, act);
+
+    pets[q] = new Array ( name, type, breed, actLength, act, lat, long);
     console.log(pets[q]);
     $("#location-group").append("<button class='item1' id='"+q+"'>"+pets[q][0]+"</button>")
     i = q;
     updatePetInHTML()
-
-
-
-
 
 })
 

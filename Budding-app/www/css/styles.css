@@ -3,30 +3,36 @@ html {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     max-width: 100%;
     max-height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: var(--lightblue);
 }
+
 :root {
     --white: white;
     --lightblue: #b3d6d2;
     --textwhite: white;
-    --textbrown: 
+    --textbrown:
 }
+
 #intro-title {
     display: flex;
     justify-content: center;
     margin-top: 0px;
     margin-bottom: 40px;
 }
+
 .texthighlight {
     color: #e4dcc6;
 }
+
 .texthighlightdark {
     color: #407d5a;
 }
+
 .textcolorwhite {
-    color:var(--textwhite);
+    color: var(--textwhite);
 }
+
 #intro-subtitle {
     margin-top: 20px;
     margin-bottom: 0px;
@@ -37,29 +43,36 @@ html {
     width: 100vw;
     height: 100vh;
 }
+
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
 #intro-text {
     margin-bottom: 350px;
 }
+
 .jua {
     font-family: 'Jua', sans-serif;
 }
+
 .lightbrown {
     color: #A7683A;
 }
+
 .icon {
     font-size: 15vw;
 }
+
 .bg-logo {
     background-color: #4d2619;
     border-radius: 50px;
     padding: 25px;
 }
+
 .circle {
     background-color: #A7683A;
     color: #A7683A;
@@ -67,6 +80,7 @@ html {
     width: 8vw;
     height: 8vw;
 }
+
 #loading-container {
     padding: 10px;
     display: flex;
@@ -74,33 +88,40 @@ html {
     gap: 5px;
 
 }
+
 #newPetMenu {
-    display:none;
+    display: none;
 }
+
 #main-body {
     /* display: none; */
 
     width: 100vw;
     height: 100vh;
-    color:var(--textwhite);
+    color: var(--textwhite);
 }
+
 .gill {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
+
 .item {
     display: block;
     /* width:30vw; */
-    background-color:black;
+    background-color: black;
 
     margin-top: 10px;
 }
+
 .height-small {
     height: 5vh;
 }
+
 .height-large {
     height: 20vh;
 }
+
 .button {
     background-color: #4d2619;
     height: 7vh;
@@ -108,72 +129,114 @@ font-weight: bold;
     border-radius: 50px;
     margin-top: 50px;
 }
+
 .column {
-    flex-direction:column;
+    flex-direction: column;
     margin-left: auto;
     height: 100vh;
     width: fit-content;
     border-radius: 25px;
     position: absolute;
-    
-}
-.overlay{
-    position:absolute;
-    width: 100%;
-    height: 100%;
-    filter:brightness(.5);
 
 }
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: brightness(.5);
+
+}
+
 #stopTimer {
     display: none;
 }
+
 #intro {
     padding: 10px;
 }
+
 .textalign {
     text-align: center;
 }
+
 .selection-group {
     display: flex;
     justify-content: space-between;
     padding: 25px;
-    background-color:#e1e1e1
+    background-color: #e1e1e1
 }
+
 #selectors {
-    display:none;
+    display: none;
 }
+
 .input {
-    background-color:red;
+    background-color: red;
 }
 
 
-.item1 {background-color:#b1b0b0}
+.item1 {
+    background-color: #b1b0b0
+}
 
 
 .petInformation {
-    font-size: 3vh; margin-top: 0px;margin-bottom: 0px;
+    font-size: 3vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
+
 .timer {
-    background-color: black; color: rgb(0, 255, 0);
+    background-color: black;
+    color: rgb(0, 255, 0);
 }
+
 .question {
-    margin-bottom: 0px; 
-    text-align: left; 
-    padding-left: 10px; 
-    color:var(--textwhite); 
+    margin-bottom: 0px;
+    text-align: left;
+    padding-left: 10px;
+    color: var(--textwhite);
 }
+
 .h1 {
     font-size: 15vh;
 }
+
 .h2 {
     font-size: 5vh;
 }
+
 .h3 {
     font-size: 2vh;
 }
 
-#circle1 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
-#circle2 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
-#circle3 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
-#circle4 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
-#circle5 {background-color: #A7683A; color: #A7683A;filter: opacity(0.1);}
+#circle1 {
+    background-color: #A7683A;
+    color: #A7683A;
+    filter: opacity(0.1);
+}
+
+#circle2 {
+    background-color: #A7683A;
+    color: #A7683A;
+    filter: opacity(0.1);
+}
+
+#circle3 {
+    background-color: #A7683A;
+    color: #A7683A;
+    filter: opacity(0.1);
+}
+
+#circle4 {
+    background-color: #A7683A;
+    color: #A7683A;
+    filter: opacity(0.1);
+}
+
+#circle5 {
+    background-color: #A7683A;
+    color: #A7683A;
+    filter: opacity(0.1);
+}
