@@ -13,22 +13,21 @@ var i = 0;
 var z = 0;
 var lat = 0;
 var long = 0;
-var petsExist = 0; // 0=no pets, 1=pets
+var petsExist = 0;
 var totalMinutes = 0;
+var happiness = 0
+
 //ARRAYS
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
+
 var pets = new Array();
-pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.2, "Studying", "Lat", "Long", "Home");
-pets[1] = new Array("Bacon", "Dog", "Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
-pets[2] = new Array("Spot", "Dog", "Dalmation", 30, "Reading", "La4t", "Lon6g");
+pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.2, "Studying", "Lat", "Long", "Home", "sad");
+// pets[1] = new Array("Bacon", "Dog", "Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
+// pets[2] = new Array("Spot", "Dog", "Dalmation", .3, "Reading", "La4t", "Lon6g");
 // pets[3] = new Array ( "Red", "Cat","Tuxedo", 42, "Cleaning", "L7at", "L0ong");
 // pets[4] = new Array ( "Duke", "Dog","Mastiff", 15, "Eating", "Lt", "Lo-ng");
 // pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating", "L4at", "Long");
 var length = Object.keys(pets).length;
-
-
-
-
 
 //GEOLOCATION HANDLER
 //taken from professors application/done in class | cordova-geolocation-plugin
@@ -38,7 +37,6 @@ function onDeviceReady() {
     console.log("device ready")
     getLocation();
 }
-
 
 function getLocation() {
     console.log('getting location...')
@@ -69,8 +67,6 @@ function getLocation() {
         petPos = pets[i][5] + pets[i][6];
         console.log(currentPos + "|" + petPos);
     }
-
-
 }
 
 //FORWARD & BACK BUTTONS
@@ -91,8 +87,6 @@ $("button").on("click", function (event) {
 
 //GRAB / UPDATE CURRENT LOCATION FOR LOCATION CHECK
 $("#petLocationButton").on("click", function () {
-
-
     console.log("getLocation ran")
     getLocation();
 });
@@ -111,7 +105,7 @@ function init() {
 //LOAD PET FROM ARRAY INTO HTML FOR VIEWING
 function updatePetInHTML() {
     console.log(i)
-    $("#pet-name").html(pets[i][0]);
+    $("#pet-name").html(pets[i][0] + " is " + pets[i][8]);
     $("#pet-type").html(pets[i][1]);
     $("#pet-breed").html(pets[i][2]);
     $("#pet-timer").html(pets[i][3] + " minutes");
@@ -159,37 +153,19 @@ $("#submitNewPet").on("click", function () {
     var actLength = document.getElementById('petActivityInput').value;
     var act = document.getElementById('petActivityLengthInput').value;
     var describedLocation = document.getElementById('petDescribedLocationInput').value;
-
-
-
-
-
-
-    var mood = window['mood' + q] = 0;
-
+    var mood = window['mood' + q] = 'sad';
     pets[q] = new Array(name, type, breed, act, actLength, lat, long, describedLocation, eval("mood" + q));
+    pets[q][8] = 'sad'
     console.log(pets[q]);
     $("#location-group").append("<button class='item1' id='" + q + "'>" + pets[q][0] + "</button>")
-
     i = q;
     updatePetInHTML()
-
-    // for (let z = 0; z <= q;) {
-    //     console.log("totalMinutes: " + totalMinutes);
-    //     console.log('pets: ' + pets[z][3])
-    //     totalMinutes = Number(totalMinutes) + Number(pets[z][3]);//https://stackoverflow.com/questions/14496531/adding-two-numbers-concatenates-them-instead-of-calculating-the-sum
-    //     console.log("totalMinutes: " + totalMinutes)
-    //     z++;
-    // }
-
 
     // SET PET CHECK TO 1
     if (pets[0][3] != 0) {
         console.log("pets now exist");
         $("#petbutton").show();
     }
-
-
 
     pets[q][8] = 'sad' //Set current emotion
     console.log(pets[q][8] + ": array") //Display current emotino
@@ -205,7 +181,6 @@ $("#location-group").on("click", function (event) {
     console.log(i)
     updatePetInHTML()
 });
-
 
 //ACTIVITY TIMER
 //https://www.geeksforgeeks.org/javascript-timer/
@@ -230,17 +205,24 @@ function decrement() {
         tiredTimer = 60
         $("#seconds").hide();
         $("#minutesRemain").html("Activity finished! " + pets[i][0] + " is happy!")
-
+        petHappinessUpdater();
     }
 }
-
-
-
-
-// console.log(var_1);
-// console.log(var_2);
-// console.log(var_3);
-// console.log(var_4);
-// console.log(var_5);
-
-
+function petHappinessUpdater() {
+    pets[i][8] = "happy"
+    updatePetInHTML();
+    console.log(length + "|" + happiness)
+    for (let z = 0; z < length; z++) {
+        console.log(z);
+        if (pets[z][8] == 'happy') {
+            console.log("True")
+            happiness++
+        }
+    }
+    if (happiness >= length) {
+        console.log("All pets are happy!")
+        console.log("Begin cooldown.")
+    } else {
+        happiness = 0;
+    }
+}
