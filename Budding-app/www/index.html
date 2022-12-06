@@ -18,14 +18,14 @@
     under the License.
 -->
 <html>
+
+
 <!-- ------------------------------ TO DO -->
-<!-- Tasks to be completed all at once. Only one timer for cooldown from activity. Keep things simple-->
-<!-- Set breaks to be changable, per pet-->
+<!-- Set up pet happiness, if all = happy begin user prompt cooldown. -->
 <!-- confirm functionality on android-->
 <!-- finish intro -->
 <!-- finish styling-->
 <!-- export as app-->
-
 
 <!-- ------------------------------ CURRENT ISSUES -->
 <!-- Must press "grab location" twice to get location data - first one returns 0 -->
@@ -86,8 +86,9 @@
 
 
         <!--HEADER-->
-        <h1 class="jua lightbrown textalign h2" style="margin-top: 0; margin-bottom: 0px;" id="budding-header">budding</h1>
-        
+        <h1 class="jua lightbrown textalign h2" style="margin-top: 0; margin-bottom: 0px;" id="budding-header">budding
+        </h1>
+
         <h1 class="jua textalign textcolorwhite h4" style="margin-top: 0" id="position-header">location unknown</h1>
 
 
@@ -110,11 +111,13 @@
 
         <!--ACTIVITY & TIMER MENU-->
         <div class="overlay" id="overlay">
-            <h1 class="textalign h2">Spend time with your pet!</h1>
-            <p class=" textalign" id="activity">Activity with Petname!</p>
+            <h1 class="textalign h2" id="doActivity">Spend time with your pet!</h1>
             <button id="startTimer"> Start Time</button>
             <div>
-                <div class="textalign" id="timerSlot"><h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1><p id="minutesRemain"class="h3">minutes remain</p></div>
+                <div class="textalign" id="timerSlot">
+                    <h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1>
+                    <p id="minutesRemain" class="h3">minutes remain</p>
+                </div>
             </div>
         </div>
 
@@ -151,10 +154,10 @@
                     <div>
                         <p class="question">How long is their activity?</p><input id="petActivityLengthInput">
                     </div>
-                    </div>
-                    <div>
-                        <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
-                    </div>
+                </div>
+                <div>
+                    <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
+                </div>
                 <div><button id="submitNewPet">Adopt New Pet</button></div>
             </div>
         </div>

@@ -14,13 +14,13 @@ var z = 0;
 var lat = 0;
 var long = 0;
 var petsExist = 0; // 0=no pets, 1=pets
-
+var totalMinutes = 0;
 //ARRAYS
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
-var pets = new Array ( );
-// pets[0] = new Array ( "Jambo", "Cat","Orange Tabby",0.2, "Studying", "Lat", "Long");
-// pets[1] = new Array ( "Bacon", "Dog","Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
-// pets[2] = new Array ( "Spot", "Dog","Dalmation", 30, "Reading", "La4t", "Lon6g");
+var pets = new Array();
+pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.2, "Studying", "Lat", "Long", "Home");
+pets[1] = new Array("Bacon", "Dog", "Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
+pets[2] = new Array("Spot", "Dog", "Dalmation", 30, "Reading", "La4t", "Lon6g");
 // pets[3] = new Array ( "Red", "Cat","Tuxedo", 42, "Cleaning", "L7at", "L0ong");
 // pets[4] = new Array ( "Duke", "Dog","Mastiff", 15, "Eating", "Lt", "Lo-ng");
 // pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating", "L4at", "Long");
@@ -30,14 +30,14 @@ var length = Object.keys(pets).length;
 
 
 
-    //GEOLOCATION HANDLER
-    //taken from professors application/done in class | cordova-geolocation-plugin
+//GEOLOCATION HANDLER
+//taken from professors application/done in class | cordova-geolocation-plugin
 document.addEventListener('deviceready', onDeviceReady, false);
 init();
 function onDeviceReady() {
     console.log("device ready")
     getLocation();
- }
+}
 
 
 function getLocation() {
@@ -50,7 +50,7 @@ function getLocation() {
         console.log(position);
         lat = position.coords.latitude
         long = position.coords.longitude
-        $("#position-header").html(lat +" | "+ long)
+        $("#position-header").html(lat + " | " + long)
         // $("#").append(lat + "," + long) --------Insert results into HTML
     }
     locationCheck();
@@ -58,93 +58,96 @@ function getLocation() {
         alert(message.message);
     }
     if (currentPos == petPos) {
-        console.log("Location Match! " +pets[i][1]+ " is here!")
+        console.log("Location Match! " + pets[i][1] + " is here!")
         $("#petbutton").show();
     } else {
         $("#petbutton").hide();
     }
     function locationCheck() {
         currentPos = lat + long;
-        console.log("My current location: "+lat + long + ' = ' + currentPos)
+        console.log("My current location: " + lat + long + ' = ' + currentPos)
         petPos = pets[i][5] + pets[i][6];
-        console.log(currentPos + "|"+ petPos);
+        console.log(currentPos + "|" + petPos);
     }
-    
+
 
 }
 
-    //FORWARD & BACK BUTTONS
-$("button").on("click",function(event) {
+//FORWARD & BACK BUTTONS
+$("button").on("click", function (event) {
     length = Object.keys(pets).length;
 
-    if(event.target.id == "forward") {
-    if(i < length-1 ) {i++;}else if(i = length ) {i = 0;}
+    if (event.target.id == "forward") {
+        if (i < length - 1) { i++; } else if (i = length) { i = 0; }
         updatePetInHTML();
         console.log(i)
     }
-    if(event.target.id == "backward") {
-        if(i > 0) {i--;}else if(i == 0 ){i = length - 1;}
+    if (event.target.id == "backward") {
+        if (i > 0) { i--; } else if (i == 0) { i = length - 1; }
         updatePetInHTML();
         console.log(i)
     }
 });
 
-    //GRAB / UPDATE CURRENT LOCATION FOR LOCATION CHECK
-$("#petLocationButton").on("click",function() {
+//GRAB / UPDATE CURRENT LOCATION FOR LOCATION CHECK
+$("#petLocationButton").on("click", function () {
 
-        
-        console.log("getLocation ran")
-        getLocation();
+
+    console.log("getLocation ran")
+    getLocation();
 });
 
-    //CALCULATE PET PANEL ROSTER SLOTS, GENERATE CORRESPONDING BUTTONS
+//CALCULATE PET PANEL ROSTER SLOTS, GENERATE CORRESPONDING BUTTONS
 function init() {
     length = Object.keys(pets).length;
     console.log(length + "=length")
-    for(let z = 0; z < length; z++) {
+    for (let z = 0; z < length; z++) {
         console.log("z = " + z + "|length = " + length);
-        $("#location-group").append("<button class='item1' id='"+z+"'>"+pets[z][0]+"</button>")
+        $("#location-group").append("<button class='item1' id='" + z + "'>" + pets[z][0] + "</button>")
+
     }
-    console.log("does pets[6] exist? " + pets[6]);
 }
 
-    //LOAD PET FROM ARRAY INTO HTML FOR VIEWING
+//LOAD PET FROM ARRAY INTO HTML FOR VIEWING
 function updatePetInHTML() {
     console.log(i)
-        $("#pet-name").html(pets[i][0]);
-        $("#pet-type").html(pets[i][1]);
-        $("#pet-breed").html(pets[i][2]);
-        $("#pet-timer").html(pets[i][3] + " minutes");
-        $("#pet-activity").html(pets[i][4]);
-        $("#pet-longitude").html(pets[i][5]);
-        $("#pet-latitude").html(pets[i][6]);
-        $("#pet-described-location").html(pets[i][0] + " is at " + pets[i][7]);
+    $("#pet-name").html(pets[i][0]);
+    $("#pet-type").html(pets[i][1]);
+    $("#pet-breed").html(pets[i][2]);
+    $("#pet-timer").html(pets[i][3] + " minutes");
+    $("#pet-activity").html(pets[i][4]);
+    $("#pet-longitude").html(pets[i][5]);
+    $("#pet-latitude").html(pets[i][6]);
+    $("#pet-described-location").html(pets[i][0] + " is at " + pets[i][7]);
 }
-    //SHOW PET PANEL, HIDE OTHER PANELS
-$("#petpanelbutton").on("click",function() {
+//SHOW PET PANEL, HIDE OTHER PANELS
+$("#petpanelbutton").on("click", function () {
     $("#selectors").toggle();
     $("#overlay").hide();
+
 })
 
-    //SHOW 
-$("#petbutton").on("click",function() {
-    
+//SHOW 
+$("#petbutton").on("click", function () {
+
     $("#overlay").toggle();
     $("#selectors").hide();
+    $("#doActivity").html(pets[i][4] + " with " + pets[i][0] + "!")
+    $("#seconds").html(pets[i][3])
 })
 
 
-    //SHOW NEW PET FORM, GET LOCATION DATA
-$("#newPet").on("click",function(){
+//SHOW NEW PET FORM, GET LOCATION DATA
+$("#newPet").on("click", function () {
     $("#overlay").hide();
     $("#selectors").hide();
     $("#newPetMenu").show();
     getLocation();
-    $("#petCoordsInput").append(lat+ "," +long);
+    $("#petCoordsInput").append(lat + "," + long);
 })
 
-    //SUBMIT NEW PET TO PET PANEL ROSTER
-$("#submitNewPet").on("click",function() {
+//SUBMIT NEW PET TO PET PANEL ROSTER
+$("#submitNewPet").on("click", function () {
     getLocation
     $("#newPetMenu").hide();
     $("#selectors").show();
@@ -156,26 +159,47 @@ $("#submitNewPet").on("click",function() {
     var actLength = document.getElementById('petActivityInput').value;
     var act = document.getElementById('petActivityLengthInput').value;
     var describedLocation = document.getElementById('petDescribedLocationInput').value;
-    pets[q] = new Array ( name, type, breed, act, actLength, lat, long,describedLocation, tiredTimer);
+
+
+
+
+
+
+    var mood = window['mood' + q] = 0;
+
+    pets[q] = new Array(name, type, breed, act, actLength, lat, long, describedLocation, eval("mood" + q));
     console.log(pets[q]);
-    $("#location-group").append("<button class='item1' id='"+q+"'>"+pets[q][0]+"</button>")
+    $("#location-group").append("<button class='item1' id='" + q + "'>" + pets[q][0] + "</button>")
+
     i = q;
     updatePetInHTML()
-    
+
+    // for (let z = 0; z <= q;) {
+    //     console.log("totalMinutes: " + totalMinutes);
+    //     console.log('pets: ' + pets[z][3])
+    //     totalMinutes = Number(totalMinutes) + Number(pets[z][3]);//https://stackoverflow.com/questions/14496531/adding-two-numbers-concatenates-them-instead-of-calculating-the-sum
+    //     console.log("totalMinutes: " + totalMinutes)
+    //     z++;
+    // }
+
 
     // SET PET CHECK TO 1
-    if(pets[0][3] != 0) {
+    if (pets[0][3] != 0) {
         console.log("pets now exist");
         $("#petbutton").show();
     }
 
+
+
+    pets[q][8] = 'sad' //Set current emotion
+    console.log(pets[q][8] + ": array") //Display current emotino
 })
 
 
-    //PET SELECTOR BUTTONS -> BUTTON CORRESPONDS TO PET IN ARRAY
-$("#location-group").on("click", function(event){
-                //ENCOUNTERED A DUMB ERROR HERE
-                //Dynamically created elements cannot be detected by .click handler. Must be attached to something natively HTML, & use .on("click")
+//PET SELECTOR BUTTONS -> BUTTON CORRESPONDS TO PET IN ARRAY
+$("#location-group").on("click", function (event) {
+    //ENCOUNTERED A DUMB ERROR HERE
+    //Dynamically created elements cannot be detected by .click handler. Must be attached to something natively HTML, & use .on("click")
     console.log("clicked");
     i = event.target.id;
     console.log(i)
@@ -183,35 +207,40 @@ $("#location-group").on("click", function(event){
 });
 
 
-    //ACTIVITY TIMER
+//ACTIVITY TIMER
 //https://www.geeksforgeeks.org/javascript-timer/
-$("#startTimer").on("click", function() {       
+$("#startTimer").on("click", function () {
     console.log("clicked")
-    secs = ((pets[i][3])*60)
+    secs = ((pets[i][3]) * 60)
     console.log(secs)
     $("#seconds").show()
     setTimeout(decrement, 1000)
 });
-    function decrement() {
-        if (secs >=1) {
-            secs--
-            console.log(secs)
-            $("#seconds").html(Math.floor(secs/60))
-            console.log("min")
-            setTimeout(decrement, 1000)
-        }
-        if (secs == 0) {
-            clearTimeout(decrement, 1000)
-            console.log("cleartimeout")
-            tiredTimer = 60
-            $("#seconds").hide();
-            $("#minutesRemain").html("Activity finished! " + pets[i][0] + " is tired for another " + tiredTimer + " minutes.")
-
-        }
+function decrement() {
+    if (secs >= 1) {
+        secs--
+        console.log(secs)
+        $("#seconds").html(Math.floor(secs / 60))
+        console.log("min")
+        setTimeout(decrement, 1000)
+    }
+    if (secs == 0) {
+        clearTimeout(decrement, 1000)
+        console.log("cleartimeout")
+        tiredTimer = 60
+        $("#seconds").hide();
+        $("#minutesRemain").html("Activity finished! " + pets[i][0] + " is happy!")
 
     }
-    
-function noPets() {console.log("Error: No pets detected.")}
+}
 
+
+
+
+// console.log(var_1);
+// console.log(var_2);
+// console.log(var_3);
+// console.log(var_4);
+// console.log(var_5);
 
 
