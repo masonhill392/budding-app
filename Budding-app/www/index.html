@@ -22,7 +22,9 @@
 
 <!-- ------------------------------ TO DO -->
 <!-- Set up pet happiness, if all = happy begin user prompt cooldown. -->
-<!-- You are at home" thing? Where you are located?
+<!-- Cycle names in cooldown prompt -->
+<!-- Pet break user input, if put in 2h, time before sad is 4h -->
+<!-- You are at home" thing? Where you are located?-->
 <!-- confirm functionality on android-->
 <!-- finish intro -->
 <!-- finish styling-->
@@ -164,7 +166,24 @@
         </div>
     </div>
 
-
+    <div class="textalign" id="petHappyPrompt" style="background-color:rgb(33, 33, 33); padding: 20px;">
+        <div id="getCooldownPrompt">        
+            <h1>All of  Your Pets are Happy!</h1>
+            <p class=" textalign">How long do your pets get to rest for?</p><p>(answer in hours)</p><input type="number" id="petCooldown">
+            <button id="cooldownSubmit">Submit</button>
+            <p>Pets will wait to play with you after resting!</p>
+        </div>
+        <div id="cooldown">
+            <div><h1 class="center">Your pets are resting!</h1></div>
+        </div>
+        <div id="postCooldown">
+            <div><h1 class="center">Your pets are looking forward to see you!</h1>16h until lonely<h1></h1></div>
+        </div>
+        <div id="postPostCooldown">
+            <div><h1 class="center">Your pets are lonely.</h1><p> Visit them and make their day better!</p></div>
+        </div>
+        <p id="cooldownTimeRemaining">8 hours remain</p>
+    </div>
 
     </div>
 

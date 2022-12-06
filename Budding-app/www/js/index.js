@@ -7,6 +7,11 @@ $("#intro").hide();
 $("#main-view").show();
 $("#overlay").hide();
 $("#petbutton").hide();
+$("#postCooldown").hide();
+$("#cooldown").hide();
+$("#postPostCooldown").hide();
+$("#getCooldownPrompt").hide();
+$("#petHappyPrompt").hide();
 //VARIABLES
 x = 0;
 var i = 0;
@@ -221,8 +226,48 @@ function petHappinessUpdater() {
     }
     if (happiness >= length) {
         console.log("All pets are happy!")
-        console.log("Begin cooldown.")
+        console.log("Loading cooldown form")
+        loadCooldownForm();
     } else {
         happiness = 0;
     }
 }
+
+function loadCooldownForm() {
+    console.log("Cooldown form loaded");
+}
+
+
+$("#cooldownSubmit").on("click", function() {
+    $("#getCooldownPrompt").hide();
+    var petCooldown= document.getElementById('petCooldown').value;
+    secs = (petCooldown * 60 * 2)
+    halftime = (petCooldown/2)
+    $("cooldown").show();
+    setTimeout(petCooldown, 1000)
+});
+function petCooldown() {
+
+}
+function petCooldown() {
+    if (secs >= 1) {
+        secs--
+        console.log(secs)
+        $("#cooldownTimeRemaining").html(Math.floor(secs / 60) + " hours remain");
+        console.log("min")
+        setTimeout(decrement, 1000)
+    }
+    if (secs == halftime) {
+        $("#cooldown").hide();
+        $("#postCooldown").show();
+        
+    }
+    if (secs == 0) {
+        clearTimeout(petCooldown, 1000)
+        console.log("clearcooldown")
+        $("#postCooldown").hide();
+        $("#postPostCooldown").show();
+    }
+}
+
+    
