@@ -19,19 +19,16 @@
 -->
 <html>
 <!-- ------------------------------ TO DO -->
-
-<!-- set up timer function for animals, passes thru minutes from pet into function -->
-<!-- figure out how to end an interval-->
-<!-- swap buttons with icons-->
-<!-- set up geolocation plugin & functionality-->
+<!-- Tasks to be completed all at once. Only one timer for cooldown from activity. Keep things simple-->
+<!-- Set breaks to be changable, per pet-->
 <!-- confirm functionality on android-->
 <!-- finish intro -->
 <!-- finish styling-->
 <!-- export as app-->
 
 
-
-
+<!-- ------------------------------ CURRENT ISSUES -->
+<!-- Must press "grab location" twice to get location data - first one returns 0 -->
 
 
 
@@ -89,33 +86,35 @@
 
 
         <!--HEADER-->
-        <h1 class="jua lightbrown textalign" style="margin-top: 0" id="budding-header">budding</h1>
+        <h1 class="jua lightbrown textalign h2" style="margin-top: 0; margin-bottom: 0px;" id="budding-header">budding</h1>
+        
+        <h1 class="jua textalign textcolorwhite h4" style="margin-top: 0" id="position-header">location unknown</h1>
 
 
         <!--PET INFORMATION-->
-        <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name">Jambo</h1>
+        <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name"></h1>
         <div style="background-color:rgb(228, 228, 228);">
-            <p class="textalign jua texthighlightdark petInformation" id="pet-type"> Cat</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-breed">Orange Tabby</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-activity"> Studying</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-timer"> 60</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-radius"> Far</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"> Latitude</p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"> Longitude</p>
-            <div style="display: flex"><button id="petbutton">Spend time with your pet!</div>
-            <div style="display: flex"><button id="petpanelbutton">Pet Panel</div>
-            <div style="display: flex"><button id="petLocationButton">Grab Location</div>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-type"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-breed"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-activity"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-timer"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-radius"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"></p>
+            <p class="textalign jua texthighlightdark petInformation" id="pet-described-location"></p>
+            <div style="display: flex; margin-bottom: 10px;"><button id="petbutton">Spend time with your pet!</div>
+            <div style="display: flex; margin-bottom: 10px;"><button id="petpanelbutton">Pet Panel</div>
+            <div style="display: flex; margin-bottom: 10px;"><button id="petLocationButton">Get Current Location</div>
         </div>
 
 
         <!--ACTIVITY & TIMER MENU-->
         <div class="overlay" id="overlay">
-            <h1 class="textalign">Spend time with your pet!</h1>
+            <h1 class="textalign h2">Spend time with your pet!</h1>
             <p class=" textalign" id="activity">Activity with Petname!</p>
             <button id="startTimer"> Start Time</button>
-            <button id="stopTimer"> Stop Time</button>
             <div>
-                <p class="textalign" id="timerSlot">time</p>
+                <div class="textalign" id="timerSlot"><h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1><p id="minutesRemain"class="h3">minutes remain</p></div>
             </div>
         </div>
 
@@ -152,11 +151,10 @@
                     <div>
                         <p class="question">How long is their activity?</p><input id="petActivityLengthInput">
                     </div>
-                    <p class="question">Current coords:</p><input id="petCurrentCoords">
-                </div>
-                <div>
-                    <p class="question">Current location: </p><input id="petCoordsInput">
-                </div>
+                    </div>
+                    <div>
+                        <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
+                    </div>
                 <div><button id="submitNewPet">Adopt New Pet</button></div>
             </div>
         </div>

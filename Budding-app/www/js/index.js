@@ -1,36 +1,47 @@
 
 // const { $ } = require("./framework7-bundle.min");
+//INITIALIZE
 console.log("js connect")
 $("#splash-body").hide();
 $("#intro").hide();
 $("#main-view").show();
 $("#overlay").hide();
-
+$("#petbutton").hide();
+//VARIABLES
 x = 0;
 var i = 0;
 var z = 0;
 var lat = 0;
 var long = 0;
+var petsExist = 0; // 0=no pets, 1=pets
 
+//ARRAYS
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
 var pets = new Array ( );
-pets[0] = new Array ( "Jambo", "Cat","Orange Tabby", 1, "Studying", "Lat", "Long");
-pets[1] = new Array ( "Bacon", "Dog","Bichon Shih-tzu", 2, "Gym", "Lat3", "Long2");
-pets[2] = new Array ( "Spot", "Dog","Dalmation", 3, "Reading", "La4t", "Lon6g");
-pets[3] = new Array ( "Red", "Cat","Tuxedo", 4, "Cleaning", "L7at", "L0ong");
-pets[4] = new Array ( "Duke", "Dog","Mastiff", 5, "Eating", "Lt", "Lo-ng");
-pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating", "L4at", "Long");
+// pets[0] = new Array ( "Jambo", "Cat","Orange Tabby",0.2, "Studying", "Lat", "Long");
+// pets[1] = new Array ( "Bacon", "Dog","Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
+// pets[2] = new Array ( "Spot", "Dog","Dalmation", 30, "Reading", "La4t", "Lon6g");
+// pets[3] = new Array ( "Red", "Cat","Tuxedo", 42, "Cleaning", "L7at", "L0ong");
+// pets[4] = new Array ( "Duke", "Dog","Mastiff", 15, "Eating", "Lt", "Lo-ng");
+// pets[5] = new Array ( "Nearo", "Dog","Burmese Mountain Dog", 6, "Meditating", "L4at", "Long");
 var length = Object.keys(pets).length;
 
-//taken from professors application/done in class | cordova-geolocation-plugin
 
+
+
+
+    //GEOLOCATION HANDLER
+    //taken from professors application/done in class | cordova-geolocation-plugin
 document.addEventListener('deviceready', onDeviceReady, false);
+init();
 function onDeviceReady() {
     console.log("device ready")
     getLocation();
  }
- init();
+
+
 function getLocation() {
+    console.log('getting location...')
     var geoOpts = {
         enableHighAccuracy: true
     }
@@ -39,16 +50,31 @@ function getLocation() {
         console.log(position);
         lat = position.coords.latitude
         long = position.coords.longitude
+        $("#position-header").html(lat +" | "+ long)
         // $("#").append(lat + "," + long) --------Insert results into HTML
     }
+    locationCheck();
     function geoError(message) {
         alert(message.message);
     }
-    console.log(lat + long)
+    if (currentPos == petPos) {
+        console.log("Location Match! " +pets[i][1]+ " is here!")
+        $("#petbutton").show();
+    } else {
+        $("#petbutton").hide();
+    }
+    function locationCheck() {
+        currentPos = lat + long;
+        console.log("My current location: "+lat + long + ' = ' + currentPos)
+        petPos = pets[i][5] + pets[i][6];
+        console.log(currentPos + "|"+ petPos);
+    }
+    
+
 }
 
-
-$("button").on("click",function(event) {//FORWARD & BACK BUTTONS
+    //FORWARD & BACK BUTTONS
+$("button").on("click",function(event) {
     length = Object.keys(pets).length;
 
     if(event.target.id == "forward") {
@@ -62,10 +88,16 @@ $("button").on("click",function(event) {//FORWARD & BACK BUTTONS
         console.log(i)
     }
 });
+
+    //GRAB / UPDATE CURRENT LOCATION FOR LOCATION CHECK
 $("#petLocationButton").on("click",function() {
-    getLocation();
-    console.log("getLocation ran")
+
+        
+        console.log("getLocation ran")
+        getLocation();
 });
+
+    //CALCULATE PET PANEL ROSTER SLOTS, GENERATE CORRESPONDING BUTTONS
 function init() {
     length = Object.keys(pets).length;
     console.log(length + "=length")
@@ -76,35 +108,42 @@ function init() {
     console.log("does pets[6] exist? " + pets[6]);
 }
 
+    //LOAD PET FROM ARRAY INTO HTML FOR VIEWING
 function updatePetInHTML() {
     console.log(i)
         $("#pet-name").html(pets[i][0]);
         $("#pet-type").html(pets[i][1]);
         $("#pet-breed").html(pets[i][2]);
-        $("#pet-activity").html(pets[i][3] + " seconds");
-        $("#pet-timer").html(pets[i][4]);
+        $("#pet-timer").html(pets[i][3] + " minutes");
+        $("#pet-activity").html(pets[i][4]);
         $("#pet-longitude").html(pets[i][5]);
         $("#pet-latitude").html(pets[i][6]);
+        $("#pet-described-location").html(pets[i][0] + " is at " + pets[i][7]);
 }
-
+    //SHOW PET PANEL, HIDE OTHER PANELS
 $("#petpanelbutton").on("click",function() {
     $("#selectors").toggle();
     $("#overlay").hide();
 })
+
+    //SHOW 
 $("#petbutton").on("click",function() {
+    
     $("#overlay").toggle();
     $("#selectors").hide();
 })
+
+
+    //SHOW NEW PET FORM, GET LOCATION DATA
 $("#newPet").on("click",function(){
     $("#overlay").hide();
     $("#selectors").hide();
     $("#newPetMenu").show();
-
     getLocation();
     $("#petCoordsInput").append(lat+ "," +long);
-
-
 })
+
+    //SUBMIT NEW PET TO PET PANEL ROSTER
 $("#submitNewPet").on("click",function() {
     getLocation
     $("#newPetMenu").hide();
@@ -116,59 +155,63 @@ $("#submitNewPet").on("click",function() {
     var breed = document.getElementById('petBreedInput').value;
     var actLength = document.getElementById('petActivityInput').value;
     var act = document.getElementById('petActivityLengthInput').value;
-
-    pets[q] = new Array ( name, type, breed, actLength, act, lat, long);
+    var describedLocation = document.getElementById('petDescribedLocationInput').value;
+    pets[q] = new Array ( name, type, breed, act, actLength, lat, long,describedLocation, tiredTimer);
     console.log(pets[q]);
     $("#location-group").append("<button class='item1' id='"+q+"'>"+pets[q][0]+"</button>")
     i = q;
     updatePetInHTML()
+    
+
+    // SET PET CHECK TO 1
+    if(pets[0][3] != 0) {
+        console.log("pets now exist");
+        $("#petbutton").show();
+    }
 
 })
 
-//ENCOUNTERED A DUMB ERROR HERE
-//Dynamically created elements cannot be detected by .click handler. Must be attached to something natively HTML, & use .on("click")
 
+    //PET SELECTOR BUTTONS -> BUTTON CORRESPONDS TO PET IN ARRAY
 $("#location-group").on("click", function(event){
+                //ENCOUNTERED A DUMB ERROR HERE
+                //Dynamically created elements cannot be detected by .click handler. Must be attached to something natively HTML, & use .on("click")
     console.log("clicked");
     i = event.target.id;
     console.log(i)
     updatePetInHTML()
 });
-// $("#startTimer").click(function() {
-//     $("#startTimer").hide();
-//     $("#stopTimer").show();
-//     timer = 60*pets[i][3];
-//     console.log(timer)
-//     setInterval(activityTimer, 300);
-        
-//     });
-
-//     $("#stopTimer").click(function() {
-//         $("#startTimer").show();
-//         $("#stopTimer").hide();
-//         clearInterval(activityTimer);
-            
-//         });
 
 
+    //ACTIVITY TIMER
+//https://www.geeksforgeeks.org/javascript-timer/
+$("#startTimer").on("click", function() {       
+    console.log("clicked")
+    secs = ((pets[i][3])*60)
+    console.log(secs)
+    $("#seconds").show()
+    setTimeout(decrement, 1000)
+});
+    function decrement() {
+        if (secs >=1) {
+            secs--
+            console.log(secs)
+            $("#seconds").html(Math.floor(secs/60))
+            console.log("min")
+            setTimeout(decrement, 1000)
+        }
+        if (secs == 0) {
+            clearTimeout(decrement, 1000)
+            console.log("cleartimeout")
+            tiredTimer = 60
+            $("#seconds").hide();
+            $("#minutesRemain").html("Activity finished! " + pets[i][0] + " is tired for another " + tiredTimer + " minutes.")
+
+        }
+
+    }
     
-// https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
-
-
-// function activityTimer() {  
-//     if (timer > 0) {
-//         timer--;
-//         console.log(timer)
-//         $("#timerSlot").html(timer);
-//     }
-//     if(timer == 0) {
-//         console.log(timer)
-//         $("#timerSlot").html('Finished');
-        
-//     }
-    
-// }
-
+function noPets() {console.log("Error: No pets detected.")}
 
 
 
