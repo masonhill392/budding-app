@@ -11,9 +11,9 @@ $("#postCooldown").show();
 $("#cooldown").hide();
 $("#postPostCooldown").hide();
 $("#getCooldownPrompt").hide();
-$("#petHappyPrompt").show();
+$("#petHappyPrompt").hide();
 $("#cooldownTimeRemaining").hide();
-$("#petStats").hide();
+$("#petStats").show();
 //VARIABLES
 x = 0;
 var i = 0;
@@ -28,7 +28,7 @@ var happiness = 0
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
 
 var pets = new Array();
-// pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.1, "Studying", "Lat", "Long", "Home", "sad");
+pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.1, "Studying", "Lat", "Long", "Home", "sad");
 // pets[1] = new Array("Bacon", "Dog", "Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
 // pets[2] = new Array("Spot", "Dog", "Dalmation", .3, "Reading", "La4t", "Lon6g");
 // pets[3] = new Array ( "Red", "Cat","Tuxedo", 42, "Cleaning", "L7at", "L0ong");

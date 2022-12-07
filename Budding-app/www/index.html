@@ -71,132 +71,148 @@
 
     <!--MAIN APP VIEW-->
     <div id="main-view">
-
-
-        <!--HEADER-->
-        <h1 class="jua lightbrown textalign h2" style="margin-top: 0; margin-bottom: 0px;" id="budding-header">budding
+        <h1 class="jua lightbrown textalign h2" style="margin-top: 0; margin-bottom: 0px;" id="budding-header">
+            budding
         </h1>
-
         <h1 class="jua textalign textcolorwhite h4" style="margin-top: 0" id="position-header">location unknown</h1>
 
 
-        <!--PET INFORMATION-->
-
-        <div style="background-color:rgb(228, 228, 228);" id="petStats">
-            <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name"></h1>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-type"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-breed"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-activity"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-timer"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-radius"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"></p>
-            <p class="textalign jua texthighlightdark petInformation" id="pet-described-location"></p>
+        <div id="screen" class="center">
+            <!--HEADER-->
 
 
-        </div>
 
 
-        <!--ACTIVITY & TIMER MENU-->
-        <div class="overlay" id="overlay">
-            <h1 class="textalign h2" id="doActivity">Spend time with your pet!</h1>
 
-            <div>
-                <div class="textalign" id="timerSlot">
-                    <h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1>
-                    <p id="minutesRemain" class="h3">minutes remain</p>
-                </div>
+            <!--PET INFORMATION-->
+
+            <div id="petStats">
+                <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name"></h1>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-type"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-breed"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-activity"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-timer"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-radius"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"></p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-described-location"></p>
+
+
             </div>
-        </div>
 
 
+            <!--ACTIVITY & TIMER MENU-->
+            <div class="overlay" id="overlay">
+                <h1 class="textalign h2" id="doActivity">Spend time with your pet!</h1>
 
-
-        <!--SIDE MENU-->
-        <div class="column textalign" id="selectors">
-            <div class="item height-large">
-                <h1 class="textalign textcolorwhite">Pet Panel</h1>
-                <div id="location-group" class="selection-group"></div>
-                <button id="forward">forward</button>
-                <button id="backward">backward</button>
-                <button id="newPet">new pet</button>
-            </div>
-        </div>
-
-
-
-
-
-        <!--SIDE MENU-->
-        <div class="column textalign" id="newPetMenu">
-            <div class="item">
-                <h1 class="textalign" style="color: white;">New Pet..</h1>
-                <div id="property-group">
-                    <div>
-                        <p class="question">Pets name?</p><input id="petNameInput">
-                    </div>
-                    <div>
-                        <p class="question">What type of animal?</p><input id="petTypeInput">
-                    </div>
-                    <div>
-                        <p class="question">What breed of animal?</p><input id="petBreedInput">
-                    </div>
-                    <div>
-                        <p class="question">What activity do they like?</p><input id="petActivityInput">
-                    </div>
-                    <div>
-                        <p class="question">How long is their activity?</p><input type="number"
-                            id="petActivityLengthInput">
-                    </div>
-                </div>
                 <div>
-                    <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
+                    <div class="textalign" id="timerSlot">
+                        <h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1>
+                        <p id="minutesRemain" class="h3">minutes remain</p>
+                    </div>
                 </div>
-                <div><button id="submitNewPet">Adopt New Pet</button></div>
             </div>
-        </div>
-    </div>
 
 
 
 
-    <div class="textalign" id="petHappyPrompt" style="background-color:rgb(33, 33, 33); padding: 20px;">
-        <div id="getCooldownPrompt">
-            <h1>All of Your Pets are Happy!</h1>
-            <p class=" textalign">How long do your pets get to rest for?</p>
-            <p>(answer in hours)</p><input type="number" id="petCooldown">
-            <button id="cooldownSubmit">Submit</button>
-            <p>Pets will wait to play with you after resting!</p>
-        </div>
-        <div id="cooldown">
-            <div>
-                <h1 class="center">Your pets are resting!</h1>
+            <!--SIDE MENU-->
+
+
+
+
+
+
+            <!--SIDE MENU-->
+            <div class="column textalign" id="newPetMenu">
+                <div class="item">
+                    <h1 class="textalign" style="color: white;">New Pet..</h1>
+                    <div id="property-group">
+                        <div>
+                            <p class="question">Pets name?</p><input id="petNameInput">
+                        </div>
+                        <div>
+                            <p class="question">What type of animal?</p><input id="petTypeInput">
+                        </div>
+                        <div>
+                            <p class="question">What breed of animal?</p><input id="petBreedInput">
+                        </div>
+                        <div>
+                            <p class="question">What activity do they like?</p><input id="petActivityInput">
+                        </div>
+                        <div>
+                            <p class="question">How long is their activity?</p><input type="number"
+                                id="petActivityLengthInput">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
+                    </div>
+                    <div><button id="submitNewPet">Adopt New Pet</button></div>
+                </div>
             </div>
-        </div>
-        <div id="postCooldown">
-            <div>
-                <h1 class="center">Your pets are ready!</h1>
-                <p>Travel to your Pets' home, open the Pet Panel, and give them attention!</p>
+
+
+
+
+
+            <div class="textalign" id="petHappyPrompt" style="background-color:rgb(33, 33, 33); padding: 20px;">
+                <div id="getCooldownPrompt">
+                    <h1>All of Your Pets are Happy!</h1>
+                    <p class=" textalign">How long do your pets get to rest for?</p>
+                    <p>(answer in hours)</p><input type="number" id="petCooldown">
+                    <button id="cooldownSubmit">Submit</button>
+                    <p>Pets will wait to play with you after resting!</p>
+                </div>
+                <div id="cooldown">
+                    <div>
+                        <h1 class="center">Your pets are resting!</h1>
+                    </div>
+                </div>
+                <div id="postCooldown">
+                    <div>
+                        <h1 class="center">Your pets are ready!</h1>
+                        <p>Travel to your Pets' home, open the Pet Panel, and give them attention!</p>
+                    </div>
+                </div>
+                <div id="postPostCooldown">
+                    <div>
+                        <h1 class="center">Your pets are lonely.</h1>
+                        <p> Visit them and make their day better!</p>
+                    </div>
+                </div>
+                <p id="cooldownTimeRemaining"></p>
             </div>
+
+
+
+
+
         </div>
-        <div id="postPostCooldown">
-            <div>
-                <h1 class="center">Your pets are lonely.</h1>
-                <p> Visit them and make their day better!</p>
+        <div id="secondaryScreen">
+            <div class="textalign" id="selectors">
+                <div class="item height-large">
+                    <h1 class="textalign textcolorwhite jua lightbrown">Select Your Pet</h1>
+                    <div id="location-group" class="selection-group"></div>
+                    <div id="petPanelButtons">
+                        <button id="forward" style="background-color: var(--coral)">next</button>
+                        <button id="newPet" style="background-color: var(--coral)">new pet</button>
+                        <button id="backward" style="background-color: var(--coral)">prev</button>
+                    </div>
+                </div>
             </div>
+
+
+
         </div>
-        <p id="cooldownTimeRemaining"></p>
-    </div>
 
-
-
-    <div id="buttons">
-        <div style="display: flex; margin-bottom: 10px;"><button id="petbutton">Spend time with your pet!</div>
-        <div style="display: flex; margin-bottom: 10px;"><button id="petpanelbutton">Pet Panel</div>
-        <div style="display: flex; margin-bottom: 10px;"><button id="petLocationButton">Get Current Location</div>
-        <button style="display: flex; margin-bottom: 10px;" id="cooldownPetView">Cooldown</button>
-        <button id="startTimer"> Start Time</button>
-    </div>
+        <div id="buttons">
+            <button id="petbutton">Spend time with your pet!</button>
+            <button id="petpanelbutton">Pet Panel</button>
+            <button id="petLocationButton">Get Current Location</button>
+            <button id="cooldownPetView">Cooldown</button>
+            <button id="startTimer"> Start Time</button>
+        </div>
     </div>
 
     <script src="cordova.js"></script>

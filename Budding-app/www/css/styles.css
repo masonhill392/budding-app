@@ -11,7 +11,11 @@ html {
     --white: white;
     --lightblue: #b3d6d2;
     --textwhite: white;
-    --textbrown:
+    --textbrown: ;
+    --mainbrown: #4d2619;
+    --mainfont: 'Jua', sans-serif;
+    --coral: rgb(192, 101, 68);
+    --lightbrown: #A7683A;
 }
 
 #intro-title {
@@ -41,7 +45,7 @@ html {
 #splash-body {
     background-color: #573023;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 
 .center {
@@ -93,6 +97,50 @@ html {
     display: none;
 }
 
+#main-view {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4d2619;
+    width: 100%;
+    height: 100vh;
+}
+
+button {
+    background-color: var(--lightblue);
+    border-radius: 25px;
+    color: rgb(37, 37, 37);
+    padding: 10px;
+    font-family: var(--mainfont);
+    /* font-size: large; */
+    font-weight: bold;
+}
+
+#buttons {
+    margin: 0px;
+    padding: 10px;
+    /* background-color: #181818; */
+    display: flex;
+    height: 10vh;
+    bottom: 0px;
+    position: absolute;
+}
+
+#secondaryScreen {
+    background-color: var(--mainbrown);
+    height: 100vmin;
+    width: 100%;
+}
+
+#screen {
+    width: 100%;
+    height: 50%;
+    background-color: var(--lightblue);
+}
+
+body {
+    margin: 0px;
+}
+
 #main-body {
     /* display: none; */
 
@@ -109,7 +157,7 @@ html {
 .item {
     display: block;
     /* width:30vw; */
-    background-color: black;
+    /* background-color: black; */
 
     margin-top: 10px;
 }
@@ -122,10 +170,12 @@ html {
     height: 20vh;
 }
 
+
+
 .button {
     background-color: #4d2619;
     height: 7vh;
-    width: 20vh;
+
     border-radius: 50px;
     margin-top: 50px;
 }
@@ -162,9 +212,15 @@ html {
 
 .selection-group {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
     padding: 25px;
-    background-color: #e1e1e1
+    background-color: var(--coral);
+    overflow-x: auto;
+}
+
+#petPanelButtons {
+    padding-top: 10px;
 }
 
 #selectors {
@@ -177,7 +233,9 @@ html {
 
 
 .item1 {
-    background-color: #b1b0b0
+    background-color: var(--mainbrown);
+    color: var(--lightbrown);
+    font-size: larger;
 }
 
 
