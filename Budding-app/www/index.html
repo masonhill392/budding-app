@@ -86,17 +86,18 @@
 
             <!--PET INFORMATION-->
 
-            <div id="petStats">
-                <h1 class="textalign jua lightbrown" style="font-size: 7vh; margin-bottom: 0px;" id="pet-name"></h1>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-type"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-breed"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-activity"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-timer"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-radius"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-longitude"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-latitude"></p>
-                <p class="textalign jua texthighlightdark petInformation" id="pet-described-location"></p>
-
+            <div id="petStats" >
+                <h1 class="textalign jua lightbrown" style="font-size: 5vh; margin-bottom: 0px;" id="pet-name">Pet Name</h1>
+                <div id="petStatsOther" class=" darkbackground">
+                <p class="textalign jua texthighlightdark petInformation" id="pet-type">Type</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-breed">Breed</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-activity">Activity</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-timer">Time Required</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-described-location">Location</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-longitude">Latitude</p>
+                <p class="textalign jua texthighlightdark petInformation" id="pet-latitude">Longitude</p>
+                
+                </div>
 
             </div>
 
@@ -108,7 +109,7 @@
                 <div>
                     <div class="textalign" id="timerSlot">
                         <h1 class="h2" id="seconds" style="margin-top: 0px; margin-bottom: 0px;">.</h1>
-                        <p id="minutesRemain" class="h3">minutes remain</p>
+                        <p id="minutesRemain" class="h3"></p>
                     </div>
                 </div>
             </div>
@@ -124,8 +125,8 @@
 
 
             <!--SIDE MENU-->
-            <div class="column textalign" id="newPetMenu">
-                <div class="item">
+            <div class="column textalign " id="newPetMenu">
+                <div class="darkbackground item ">
                     <h1 class="textalign" style="color: white;">New Pet..</h1>
                     <div id="property-group">
                         <div>
@@ -148,7 +149,6 @@
                     <div>
                         <p class="question">What is the location called? </p><input id="petDescribedLocationInput">
                     </div>
-                    <div><button id="submitNewPet">Adopt New Pet</button></div>
                 </div>
             </div>
 
@@ -156,7 +156,7 @@
 
 
 
-            <div class="textalign" id="petHappyPrompt" style="background-color:rgb(33, 33, 33); padding: 20px;">
+            <div class="textalign" id="petHappyPrompt" style="background-color: coral;padding: 20px;">
                 <div id="getCooldownPrompt">
                     <h1>All of Your Pets are Happy!</h1>
                     <p class=" textalign">How long do your pets get to rest for?</p>
@@ -166,22 +166,22 @@
                 </div>
                 <div id="cooldown">
                     <div>
-                        <h1 class="center">Your pets are resting!</h1>
+                        <h1 class="center textcolorwhite">Your pets are resting!</h1>
                     </div>
                 </div>
-                <div id="postCooldown">
+                <div id="postCooldown" class="textcolorwhite">
                     <div>
-                        <h1 class="center">Your pets are ready!</h1>
-                        <p>Travel to your Pets' home, open the Pet Panel, and give them attention!</p>
+                        <h1 class="center textcolorwhite">Your pets are ready!</h1>
+                        <p class="textcolorwhite">Travel to your Pets' home, open the Pet Panel, and give them attention!</p>
                     </div>
                 </div>
                 <div id="postPostCooldown">
                     <div>
-                        <h1 class="center">Your pets are lonely.</h1>
-                        <p> Visit them and make their day better!</p>
+                        <h1 class="center textcolorwhite">Your pets are lonely.</h1>
+                        <p class="textcolorwhite"> Visit them and make their day better!</p>
                     </div>
                 </div>
-                <p id="cooldownTimeRemaining"></p>
+                <p id="cooldownTimeRemaining"class="textcolorwhite"></p>
             </div>
 
 
@@ -198,20 +198,23 @@
                         <button id="forward" style="background-color: var(--coral)">next</button>
                         <button id="newPet" style="background-color: var(--coral)">new pet</button>
                         <button id="backward" style="background-color: var(--coral)">prev</button>
+
                     </div>
                 </div>
             </div>
 
 
+            <div class="center"><button id="startTimer"> Start Activity</button>
+                <button id="submitNewPet" style="background-color: var(--coral)">Adopt New Pet</button></div>
+          
 
         </div>
 
         <div id="buttons">
-            <button id="petbutton">Spend time with your pet!</button>
+            <button id="petbutton">Activity</button>
             <button id="petpanelbutton">Pet Panel</button>
-            <button id="petLocationButton">Get Current Location</button>
+            <button id="petLocationButton">Ping Location</button>
             <button id="cooldownPetView">Cooldown</button>
-            <button id="startTimer"> Start Time</button>
         </div>
     </div>
 
