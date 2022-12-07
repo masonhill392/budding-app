@@ -4,14 +4,11 @@
 console.log("js connect")
 $("#splash-body").hide();
 $("#intro").hide();
-$("#main-view").show();
 $("#overlay").hide();
 $("#petbutton").hide();
-$("#postCooldown").show();
 $("#cooldown").hide();
 $("#postPostCooldown").hide();
 $("#getCooldownPrompt").hide();
-$("#petHappyPrompt").show();
 $("#cooldownTimeRemaining").hide();
 $("#petStats").hide();
 $("#startTimer").hide();
@@ -19,7 +16,16 @@ $("#cooldownPetView").hide();
 $("#submitNewPet").hide();
 $("#forward").hide();
 $("#backward").hide();
-$("#petLocationButton").show();
+
+
+
+
+
+$("#petLocationButton").hide();
+$("#main-view").hide();
+$("#postCooldown").hide();
+$("#petHappyPrompt").hide();
+
 
 //VARIABLES
 x = 0;
@@ -47,6 +53,39 @@ var length = Object.keys(pets).length;
 //GEOLOCATION HANDLER
 //taken from professors application/done in class | cordova-geolocation-plugin
 document.addEventListener('deviceready', onDeviceReady, false);
+
+
+
+
+showSplash();
+function showSplash() {
+    clearInterval(showSplash, 1000);
+    console.log("showing splash")
+    $("#splash-body").show();
+
+    setTimeout(showIntro, 1000);
+}
+
+function showIntro() {
+    console.log("showing intro")
+    clearInterval(showIntro, 1000);
+    $("#intro").show();
+    $("#splash-body").hide();
+    setTimeout(showMainView, 5000);
+}
+function showMainView() {
+    console.log("showing mainview")
+
+    clearInterval(showMainView, 5000);
+    $("#intro").hide();
+
+    $("#petLocationButton").show();
+    $("#main-view").show();
+    $("#postCooldown").show();
+    $("#petHappyPrompt").show();
+}
+
+
 init();
 function onDeviceReady() {
     console.log("device ready")
