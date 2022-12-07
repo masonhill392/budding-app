@@ -7,11 +7,13 @@ $("#intro").hide();
 $("#main-view").show();
 $("#overlay").hide();
 $("#petbutton").hide();
-$("#postCooldown").hide();
+$("#postCooldown").show();
 $("#cooldown").hide();
 $("#postPostCooldown").hide();
 $("#getCooldownPrompt").hide();
-$("#petHappyPrompt").hide();
+$("#petHappyPrompt").show();
+$("#cooldownTimeRemaining").hide();
+$("#petStats").hide();
 //VARIABLES
 x = 0;
 var i = 0;
@@ -26,7 +28,7 @@ var happiness = 0
 //https://www.elated.com/nested-arrays-in-javascript/#:~:text=To%20access%20the%20elements%20of,element%20of%20the%20pets%20array.
 
 var pets = new Array();
-pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.2, "Studying", "Lat", "Long", "Home", "sad");
+// pets[0] = new Array("Jambo", "Cat", "Orange Tabby", 0.1, "Studying", "Lat", "Long", "Home", "sad");
 // pets[1] = new Array("Bacon", "Dog", "Bichon Shih-tzu", .4, "Gym", "Lat3", "Long2");
 // pets[2] = new Array("Spot", "Dog", "Dalmation", .3, "Reading", "La4t", "Lon6g");
 // pets[3] = new Array ( "Red", "Cat","Tuxedo", 42, "Cleaning", "L7at", "L0ong");
@@ -123,16 +125,19 @@ function updatePetInHTML() {
 $("#petpanelbutton").on("click", function () {
     $("#selectors").toggle();
     $("#overlay").hide();
+    $("#petHappyPrompt").hide();
+    $("#petStats").show();
 
 })
 
 //SHOW 
 $("#petbutton").on("click", function () {
-
+    $("#petHappyPrompt").hide();
     $("#overlay").toggle();
     $("#selectors").hide();
     $("#doActivity").html(pets[i][4] + " with " + pets[i][0] + "!")
     $("#seconds").html(pets[i][3])
+    $("#petStats").hide();
 })
 
 
@@ -207,7 +212,6 @@ function decrement() {
     if (secs == 0) {
         clearTimeout(decrement, 1000)
         console.log("cleartimeout")
-        tiredTimer = 60
         $("#seconds").hide();
         $("#minutesRemain").html("Activity finished! " + pets[i][0] + " is happy!")
         petHappinessUpdater();
@@ -235,39 +239,49 @@ function petHappinessUpdater() {
 
 function loadCooldownForm() {
     console.log("Cooldown form loaded");
+    $("#overlay").hide();
+    $("#petHappyPrompt").show();
+    $("#getCooldownPrompt").show();
+
 }
 
 
-$("#cooldownSubmit").on("click", function() {
+$("#cooldownSubmit").on("click", function () {
     $("#getCooldownPrompt").hide();
-    var petCooldown= document.getElementById('petCooldown').value;
+    var petCooldown = document.getElementById('petCooldown').value;
     secs = (petCooldown * 60 * 2)
-    halftime = (petCooldown/2)
-    $("cooldown").show();
-    setTimeout(petCooldown, 1000)
+    halftime = (secs / 2)
+    $("#cooldown").show();
+    $("#cooldownTimeRemaining").show();
+    setTimeout(petCooldownTimer, 1000);
+    console.log("petCooldown");
 });
-function petCooldown() {
 
-}
-function petCooldown() {
+function petCooldownTimer() {
+    console.log("petCooldown counting");
+    console.log("halftime = " + halftime);
     if (secs >= 1) {
         secs--
         console.log(secs)
-        $("#cooldownTimeRemaining").html(Math.floor(secs / 60) + " hours remain");
+        $("#cooldownTimeRemaining").html(secs + " seconds remain");
         console.log("min")
-        setTimeout(decrement, 1000)
+        setTimeout(petCooldownTimer, 1000)
     }
-    if (secs == halftime) {
+    if (secs <= halftime) {
         $("#cooldown").hide();
         $("#postCooldown").show();
-        
     }
     if (secs == 0) {
-        clearTimeout(petCooldown, 1000)
+        clearTimeout(petCooldownTimer, 1000)
         console.log("clearcooldown")
         $("#postCooldown").hide();
         $("#postPostCooldown").show();
     }
 }
-
-    
+$("#cooldownPetView").on("click", function () {
+    $("#petHappyPrompt").toggle();
+    $("#overlay").hide();
+    $("#selectors").hide();
+    $("#newPetMenu").hide();
+    $("#petStats").hide()
+});
